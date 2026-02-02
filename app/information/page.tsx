@@ -1,8 +1,10 @@
 "use client";
+
 import "../globals.css";
 import React, { useState, useEffect } from "react";
 import dummyData from "../../dummy-data/pre-match-dummy-data.json";
 import { MatchData, Team, Player } from "../Utils/LoggerHooks";
+import Navbar from "../components/navbar";
 
 export default function InformationPage() {
     const [data, setData] = useState<MatchData>(dummyData as any);
@@ -49,92 +51,110 @@ export default function InformationPage() {
         setData(prev => ({ ...prev, teams: newTeams }));
     };
 
-    if (!isLoaded) return <div className="p-10 text-white">Loading configuration...</div>;
+    if (!isLoaded) return <div className="p-10 text-gray-500 font-medium">Loading configuration...</div>;
 
     return (
-        <div className="min-h-screen bg-black text-white font-sans p-8 pb-32">
-            <h1 className="text-3xl font-black uppercase tracking-tighter mb-8 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">
-                Match Configuration
-            </h1>
+        <div className="min-h-screen bg-gray-50 text-slate-900 font-sans">
+            <Navbar />
 
-            {/* League Info */}
-            <section className="bg-gray-900 p-6 rounded-2xl mb-8 border border-gray-800">
-                <h2 className="text-xl font-bold mb-4 text-gray-400">League Details</h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 mt-14 pb-32">
+
+                {/* Header */}
+                <div className="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4">
                     <div>
-                        <label className="block text-xs uppercase text-gray-500 mb-1">League Name</label>
-                        <input
-                            type="text"
-                            value={data.league.leagueName}
-                            onChange={(e) => updateLeague('leagueName', e.target.value)}
-                            className="w-full bg-gray-800 text-white p-3 rounded-lg border border-gray-700 focus:border-blue-500 outline-none transition-all"
-                        />
+                        <h1 className="text-3xl font-bold text-gray-900 tracking-tight">Match Configuration</h1>
+                        <p className="text-gray-500 mt-1">Live editing enabled. All changes are auto-saved locally.</p>
                     </div>
-                    <div>
-                        <label className="block text-xs uppercase text-gray-500 mb-1">Sub League / Season</label>
-                        <input
-                            type="text"
-                            value={data.league.subLeague}
-                            onChange={(e) => updateLeague('subLeague', e.target.value)}
-                            className="w-full bg-gray-800 text-white p-3 rounded-lg border border-gray-700 focus:border-blue-500 outline-none transition-all"
-                        />
+                    <div className="px-4 py-2 bg-green-50 text-green-700 rounded-full text-xs font-bold border border-green-100 flex items-center gap-2">
+                        <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                        AUTO-SAVE ACTIVE
                     </div>
                 </div>
-            </section>
 
-            {/* Teams */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                {data.teams.map((team, tIdx) => (
-                    <section key={team.teamId} className="bg-gray-900 rounded-2xl border border-gray-800 overflow-hidden flex flex-col">
-                        <div className="p-6 bg-gray-800 border-b border-gray-700">
-                            <label className="block text-xs uppercase text-gray-500 mb-1">Team Name</label>
+                {/* League Info */}
+                <section className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 md:p-8 mb-8">
+                    <h2 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
+                        <span className="w-1 h-6 bg-blue-600 rounded-full"></span>
+                        League Details
+                    </h2>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div className="group">
+                            <label className="block text-xs font-semibold text-gray-400 mb-1 uppercase tracking-wider group-focus-within:text-blue-600 transition-colors">League Name</label>
                             <input
                                 type="text"
-                                value={team.teamName}
-                                onChange={(e) => updateTeamName(tIdx, e.target.value)}
-                                className="w-full bg-gray-900 text-white font-black text-2xl p-2 rounded border border-transparent focus:border-blue-500 outline-none"
+                                value={data.league.leagueName}
+                                onChange={(e) => updateLeague('leagueName', e.target.value)}
+                                className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-400 transition-all font-bold text-gray-800"
                             />
                         </div>
-
-                        <div className="p-2 overflow-y-auto max-h-[600px]">
-                            <table className="w-full text-left border-collapse">
-                                <thead className="sticky top-0 bg-gray-900 z-10">
-                                    <tr>
-                                        <th className="p-3 text-xs text-gray-500 uppercase font-bold w-16">No.</th>
-                                        <th className="p-3 text-xs text-gray-500 uppercase font-bold">Player Name</th>
-                                    </tr>
-                                </thead>
-                                <tbody className="divide-y divide-gray-800">
-                                    {team.squad.map((player, pIdx) => (
-                                        <tr key={player.playerId} className="hover:bg-gray-800/50 transition-colors">
-                                            <td className="p-2">
-                                                <input
-                                                    type="number"
-                                                    value={player.jerseyNumber}
-                                                    onChange={(e) => updatePlayer(tIdx, pIdx, 'jerseyNumber', parseInt(e.target.value) || 0)}
-                                                    className="w-12 bg-gray-800 text-center text-white p-1 rounded focus:ring-2 ring-blue-500 outline-none font-mono"
-                                                />
-                                            </td>
-                                            <td className="p-2">
-                                                <input
-                                                    type="text"
-                                                    value={player.playerName}
-                                                    onChange={(e) => updatePlayer(tIdx, pIdx, 'playerName', e.target.value)}
-                                                    className="w-full bg-transparent text-gray-300 p-1 focus:text-white outline-none border-b border-transparent focus:border-blue-500"
-                                                />
-                                            </td>
-                                        </tr>
-                                    ))}
-                                </tbody>
-                            </table>
+                        <div className="group">
+                            <label className="block text-xs font-semibold text-gray-400 mb-1 uppercase tracking-wider group-focus-within:text-blue-600 transition-colors">Sub League / Season</label>
+                            <input
+                                type="text"
+                                value={data.league.subLeague}
+                                onChange={(e) => updateLeague('subLeague', e.target.value)}
+                                className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-400 transition-all font-bold text-gray-800"
+                            />
                         </div>
-                    </section>
-                ))}
-            </div>
+                    </div>
+                </section>
 
-            <div className="fixed bottom-0 left-0 w-full bg-green-900/90 text-center py-2 text-xs font-bold text-green-200 backdrop-blur">
-                ALL CHANGES AUTO-SAVED TO LOCAL STORAGE
-            </div>
+                {/* Teams Grid */}
+                <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
+                    {data.teams.map((team, tIdx) => (
+                        <section key={team.teamId} className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden flex flex-col h-[800px]">
+                            <div className="p-6 border-b border-gray-100 bg-gray-50/50">
+                                <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+                                    <span className={`w-1 h-6 rounded-full ${tIdx === 0 ? 'bg-indigo-600' : 'bg-rose-600'}`}></span>
+                                    {tIdx === 0 ? 'Home Team' : 'Away Team'}
+                                </h2>
+                                <div className="group">
+                                    <label className="block text-xs font-semibold text-gray-400 mb-1 uppercase tracking-wider group-focus-within:text-black transition-colors">Team Name</label>
+                                    <input
+                                        type="text"
+                                        value={team.teamName}
+                                        onChange={(e) => updateTeamName(tIdx, e.target.value)}
+                                        className="w-full px-4 py-3 bg-white border border-gray-200 rounded-xl outline-none focus:ring-2 focus:ring-indigo-100 focus:border-indigo-400 transition-all font-bold text-xl text-gray-900"
+                                    />
+                                </div>
+                            </div>
+
+                            <div className="flex-1 overflow-y-auto p-0 scrollbar-thin scrollbar-thumb-gray-200">
+                                <table className="w-full text-left border-collapse">
+                                    <thead className="bg-white sticky top-0 z-10 shadow-sm">
+                                        <tr>
+                                            <th className="px-6 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider w-20 text-center">No.</th>
+                                            <th className="px-6 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider">Player Name</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody className="divide-y divide-gray-50">
+                                        {team.squad.map((player, pIdx) => (
+                                            <tr key={player.playerId} className="hover:bg-blue-50/30 transition-colors group">
+                                                <td className="px-4 py-2 text-center">
+                                                    <input
+                                                        type="number"
+                                                        value={player.jerseyNumber}
+                                                        onChange={(e) => updatePlayer(tIdx, pIdx, 'jerseyNumber', parseInt(e.target.value) || 0)}
+                                                        className="w-12 bg-gray-100 text-center text-gray-900 p-1 rounded focus:bg-white focus:ring-2 ring-indigo-200 outline-none font-bold border border-transparent focus:border-indigo-300"
+                                                    />
+                                                </td>
+                                                <td className="px-4 py-2">
+                                                    <input
+                                                        type="text"
+                                                        value={player.playerName}
+                                                        onChange={(e) => updatePlayer(tIdx, pIdx, 'playerName', e.target.value)}
+                                                        className="w-full bg-transparent text-gray-700 p-1 focus:bg-white focus:ring-2 ring-indigo-200 rounded px-2 outline-none font-medium transition-all"
+                                                    />
+                                                </td>
+                                            </tr>
+                                        ))}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </section>
+                    ))}
+                </div>
+            </main>
         </div>
     );
 }
