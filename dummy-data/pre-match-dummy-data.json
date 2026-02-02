@@ -1,0 +1,201 @@
+{
+    "league": {
+        "leagueId": "LEAGUE_001",
+        "leagueName": "Indian Football Championship",
+        "subLeague": "2024-25 Season"
+    },
+    "teams": [
+        {
+            "teamId": "TEAM_MUM",
+            "teamName": "Kolkata FC",
+            "squad": [
+                {
+                    "playerId": "MUM_P01",
+                    "playerName": "chennai 65",
+                    "jerseyNumber": 1
+                },
+                {
+                    "playerId": "MUM_P02",
+                    "playerName": "Mumbai Player 2",
+                    "jerseyNumber": 2
+                },
+                {
+                    "playerId": "MUM_P03",
+                    "playerName": "Mumbai Player 3",
+                    "jerseyNumber": 3
+                },
+                {
+                    "playerId": "MUM_P04",
+                    "playerName": "Mumbai Player 4",
+                    "jerseyNumber": 4
+                },
+                {
+                    "playerId": "MUM_P05",
+                    "playerName": "Mumbai Player 5",
+                    "jerseyNumber": 5
+                },
+                {
+                    "playerId": "MUM_P06",
+                    "playerName": "Mumbai Player 6",
+                    "jerseyNumber": 6
+                },
+                {
+                    "playerId": "MUM_P07",
+                    "playerName": "Mumbai Player 7",
+                    "jerseyNumber": 7
+                },
+                {
+                    "playerId": "MUM_P08",
+                    "playerName": "Mumbai Player 8",
+                    "jerseyNumber": 8
+                },
+                {
+                    "playerId": "MUM_P09",
+                    "playerName": "Mumbai Player 9",
+                    "jerseyNumber": 9
+                },
+                {
+                    "playerId": "MUM_P10",
+                    "playerName": "Mumbai Player 10",
+                    "jerseyNumber": 10
+                },
+                {
+                    "playerId": "MUM_P11",
+                    "playerName": "Mumbai Player 11",
+                    "jerseyNumber": 11
+                },
+                {
+                    "playerId": "MUM_P12",
+                    "playerName": "Mumbai Player 12",
+                    "jerseyNumber": 12
+                },
+                {
+                    "playerId": "MUM_P13",
+                    "playerName": "Mumbai Player 13",
+                    "jerseyNumber": 13
+                },
+                {
+                    "playerId": "MUM_P14",
+                    "playerName": "Mumbai Player 14",
+                    "jerseyNumber": 14
+                },
+                {
+                    "playerId": "MUM_P15",
+                    "playerName": "Mumbai Player 15",
+                    "jerseyNumber": 15
+                },
+                {
+                    "playerId": "MUM_P16",
+                    "playerName": "Mumbai Player 16",
+                    "jerseyNumber": 16
+                },
+                {
+                    "playerId": "MUM_P17",
+                    "playerName": "Mumbai Player 17",
+                    "jerseyNumber": 17
+                },
+                {
+                    "playerId": "MUM_P18",
+                    "playerName": "Mumbai Player 18",
+                    "jerseyNumber": 18
+                }
+            ]
+        },
+        {
+            "teamId": "TEAM_PUN",
+            "teamName": "Chennai FC",
+            "squad": [
+                {
+                    "playerId": "PUN_P01",
+                    "playerName": "Chennai 65",
+                    "jerseyNumber": 1
+                },
+                {
+                    "playerId": "PUN_P02",
+                    "playerName": "Pune Player 2",
+                    "jerseyNumber": 2
+                },
+                {
+                    "playerId": "PUN_P03",
+                    "playerName": "Pune Player 3",
+                    "jerseyNumber": 3
+                },
+                {
+                    "playerId": "PUN_P04",
+                    "playerName": "Pune Player 4",
+                    "jerseyNumber": 4
+                },
+                {
+                    "playerId": "PUN_P05",
+                    "playerName": "Pune Player 5",
+                    "jerseyNumber": 5
+                },
+                {
+                    "playerId": "PUN_P06",
+                    "playerName": "Pune Player 6",
+                    "jerseyNumber": 6
+                },
+                {
+                    "playerId": "PUN_P07",
+                    "playerName": "Pune Player 7",
+                    "jerseyNumber": 7
+                },
+                {
+                    "playerId": "PUN_P08",
+                    "playerName": "Pune Player 8",
+                    "jerseyNumber": 8
+                },
+                {
+                    "playerId": "PUN_P09",
+                    "playerName": "Pune Player 9",
+                    "jerseyNumber": 9
+                },
+                {
+                    "playerId": "PUN_P10",
+                    "playerName": "Pune Player 10",
+                    "jerseyNumber": 10
+                },
+                {
+                    "playerId": "PUN_P11",
+                    "playerName": "Pune Player 11",
+                    "jerseyNumber": 11
+                },
+                {
+                    "playerId": "PUN_P12",
+                    "playerName": "Pune Player 12",
+                    "jerseyNumber": 12
+                },
+                {
+                    "playerId": "PUN_P13",
+                    "playerName": "Pune Player 13",
+                    "jerseyNumber": 13
+                },
+                {
+                    "playerId": "PUN_P14",
+                    "playerName": "Pune Player 14",
+                    "jerseyNumber": 14
+                },
+                {
+                    "playerId": "PUN_P15",
+                    "playerName": "Pune Player 15",
+                    "jerseyNumber": 15
+                },
+                {
+                    "playerId": "PUN_P16",
+                    "playerName": "Pune Player 16",
+                    "jerseyNumber": 16
+                },
+                {
+                    "playerId": "PUN_P17",
+                    "playerName": "Pune Player 17",
+                    "jerseyNumber": 17
+                },
+                {
+                    "playerId": "PUN_P18",
+                    "playerName": "Pune Player 18",
+                    "jerseyNumber": 18
+                }
+            ]
+        }
+    ]
+}
