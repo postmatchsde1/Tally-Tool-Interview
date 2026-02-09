@@ -78,6 +78,42 @@ export default function Passing() {
         resetFlow();
     };
 
+    // --- Back Logic ---
+    const handleBack = () => {
+        // --- Unsuccessful Branch Reverse ---
+        if (passResult === 'UNSUCCESSFUL') {
+            if (isBallRecovery !== null) { setIsBallRecovery(null); return; }
+            // If in High Press section, we might have set opponent or high press flag
+            if (isHighPress === true) {
+                setIsHighPress(null);
+                setOpponentPlayerId(null); // Reset opponent if it was set here
+                return;
+            }
+            if (unsuccessfulSubType) { setUnsuccessfulSubType(null); return; }
+            if (passFailureType) { setPassFailureType(null); return; }
+        }
+
+        // --- Successful Branch Reverse ---
+        if (passResult === 'SUCCESSFUL') {
+            // Outplay details or Key Pass question
+            if (isOutplaying !== null) {
+                setIsOutplaying(null);
+                setOutplayPlayers(0);
+                setOutplayLines(0);
+                return;
+            }
+            if (progressiveSubType) { setProgressiveSubType(null); return; }
+            if (passCategory) { setPassCategory(null); return; }
+            if (toPlayerId) { setToPlayerId(null); return; }
+        }
+
+        // --- Common Reverse ---
+        if (passResult) { setPassResult(null); return; }
+        if (passLength) { setPassLength(null); return; }
+        if (fromPlayerId) { setFromPlayerId(null); return; }
+        if (selectedTeamId) { setSelectedTeamId(null); return; }
+    };
+
     // --- Submit Logic ---
     const handleSubmit = (overrides?: any) => {
         if (!selectedTeamId || !fromPlayerId || !passLength || !passResult) return;
@@ -191,9 +227,16 @@ export default function Passing() {
                     </span>
                 </div>
                 {(selectedTeamId || fromPlayerId) ? (
-                    <button onClick={fullReset} className="text-[9px] font-bold text-red-500 hover:bg-red-50 px-1 py-0.5 rounded transition-colors uppercase">
-                        Reset
-                    </button>
+                    <div className="flex items-center gap-2">
+                        {selectedTeamId && (
+                            <button onClick={handleBack} className="text-[10px] font-bold text-slate-500 hover:text-slate-800 uppercase tracking-wide">
+                                Back
+                            </button>
+                        )}
+                        <button onClick={fullReset} className="text-[9px] font-bold text-red-500 hover:bg-red-50 px-1 py-0.5 rounded transition-colors uppercase">
+                            Reset
+                        </button>
+                    </div>
                 ) : <span className="text-[9px] text-slate-400 italic">Select Team</span>}
             </div>
 
