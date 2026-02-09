@@ -156,7 +156,7 @@ export default function VideoPlay() {
     };
 
     return (
-        <section className="w-full h-full flex gap-4 bg-black p-4 rounded-xl shadow-2xl overflow-hidden min-h-[400px]">
+        <section className="w-full h-full flex gap-4 bg-black p-4 rounded-xl shadow-2xl overflow-hidden">
 
             {/* --- VIDEO 1 (LEFT) --- */}
             <div className="flex-1 flex flex-col gap-2 relative group h-full">
